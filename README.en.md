@@ -1,223 +1,212 @@
-<h1 align="center">About Sen · 3D Personal Résumé</h1>
+<h1 align="center">About Umar · 3D Personal Portfolio</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue.svg?style=flat" alt="License MIT"></a>
+  <a href="https://github.com/khalifumar/portfolio-umar"><img src="https://img.shields.io/badge/GitHub-khalifumar%2Fportfolio--umar-black?style=flat&logo=github" alt="GitHub Repository"></a>
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react&logoColor=white" alt="React 18">
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript 5">
   <img src="https://img.shields.io/badge/three.js-r169-000000?style=flat&logo=three.js&logoColor=white" alt="three.js r169">
   <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite 5">
-  <a href="https://about.senbuzy.com/"><img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat" alt="Live Demo"></a>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white" alt="Streamlit">
 </p>
 
-<p align="center"><b>Scrolling is the camera move. Your résumé, living inside a 3D scene.</b></p>
+<p align="center"><b>Interactive 3D Portfolio of Khalif Umar Al Faruq — Junior Data Analyst specializing in Python, SQL, Streamlit, and Business Intelligence.</b></p>
 
 <p align="center">
-  <a href="https://about.senbuzy.com/">Live Demo</a> |
   <a href="#quick-start">Quick Start</a> |
-  <a href="#make-it-yours">Make It Yours</a> |
-  <a href="#swapping-the-character-model">Swap the Model</a> |
-  <a href="#tutorials">Tutorials</a> |
+  <a href="#key-features">Key Features</a> |
+  <a href="#project-structure">Project Structure</a> |
+  <a href="#customization">Customization</a> |
   <a href="#deploy">Deploy</a> |
-  <a href="#source-vs-no-code">Source vs No-Code</a> |
   <a href="README.zh.md">简体中文</a>
 </p>
 
 <p align="center">
-  <a href="https://about.senbuzy.com/"><img src="docs/preview.jpg" alt="The 3D résumé hero: a scroll-driven character model behind the foreground About copy" width="800"></a>
+  <a href="https://github.com/khalifumar/portfolio-umar"><img src="docs/preview.jpg" alt="About Umar: Interactive 3D Portfolio & Résumé" width="800"></a>
 </p>
 
-A scroll-driven personal 3D résumé built on **React Three Fiber + TypeScript**: one fixed 3D background (a character model that reacts to scroll) plus scrollable HTML content in front (About → résumé → works). The camera path is the animation baked into the glb — the scrollbar just wipes through its timeline — with auto-focus depth-of-field and eye-follows-cursor layered on top. It's a pure front-end SPA: `npm run build` gives you a static `dist/` that runs anywhere.
+An interactive, scroll-driven 3D personal portfolio and résumé for **Khalif Umar Al Faruq (Umar)**, built with **React Three Fiber + TypeScript + Three.js + Vite**. Features a fixed 3D background with smooth camera movements synchronized with page scrolling, coupled with interactive HTML overlays showcasing professional experience (Bina Nusantara University, Digipack.id, MySkill Academy, Google Student Ambassador, PT Adhi Karya) and data science & business analytics projects.
 
-> **Open-source terms (read this first)**
-> The **code** is under the **MIT** license (see [`LICENSE`](LICENSE)) — you're welcome to study, reuse, and build on it.
-> The **personal content and assets** (name / character model / résumé / works copy / brand logos / social links) are **not covered by MIT** and remain the author's copyright — replace them with your own after forking, see [`NOTICE`](NOTICE).
+The camera animation path is baked into the `.glb` 3D model, layered with real-time auto-focus depth-of-field, cursor-tracking eye movements, Bloom, and cinematic film grain. A pure front-end Single Page Application (SPA) where `npm run build` outputs a completely static `dist/` ready to host anywhere.
+
+> **Open-Source & Usage Terms**  
+> - The **code** is licensed under **MIT** (see [`LICENSE`](LICENSE)).  
+> - The **personal content, data, and 3D assets** (name, character model, personal résumé, project write-ups, brand logos, and credentials) belong to **Khalif Umar Al Faruq** and are **not covered by MIT** — please replace them with your own details after forking (see [`NOTICE`](NOTICE)).
+
+---
 
 ## Quick Start
 
-### Without writing code
+The front-end application lives inside [`web/`](web). All code and asset paths are relative to `web/`, and npm commands must be run inside `web/`.
 
-Try [intro3d.com](https://intro3d.com): a no-code DIY platform for 3D personal homepages, beginner-friendly, that handles building and deployment in one place. It lacks this project's eye-follows-cursor interaction but is otherwise fairly complete. If you want a similar 3D résumé fast, it's the quicker route; see [Source vs No-Code](#source-vs-no-code) for the trade-offs.
-
-Even on the source route, intro3d doubles as a **visual glb exporter**: skip Blender, arrange the model and camera in the browser, and export the `me.glb` this project needs — see the [intro3d model tutorial](tutor/intro3d处理模型教程/intro3d处理模型教程.md) (in Chinese).
-
-### Running it locally
-
-The whole front-end app lives under [`web/`](web). **Every code / asset path below is relative to `web/`** (e.g. `src/App.tsx` means `web/src/App.tsx`), and npm commands run inside `web/`.
+### 1. Clone & Install
 
 ```bash
-git clone https://github.com/dayinji/sen-3d-resume.git
-cd sen-3d-resume/web
+git clone https://github.com/khalifumar/portfolio-umar.git
+cd portfolio-umar/web
 npm install
-npm run dev        # dev at http://localhost:5173
 ```
 
-The rest of the commands:
+### 2. Run Local Development
 
 ```bash
-npm run build      # type-check + bundle, output to dist/
-npm run preview    # preview the build output
-npm run typecheck  # type-check only (tsc -b)
-npm run lint       # ESLint
+npm run dev        # Local dev server at http://localhost:5173
 ```
 
-**Requirements:** Node.js 20+ (ESLint 10 needs it). No backend, no database, no API keys.
+### 3. Other Build Commands
 
-## What You Get
+```bash
+npm run build      # Type check + production bundle (outputs to web/dist/)
+npm run preview    # Preview the built production output
+npm run typecheck  # TypeScript check only (tsc -b)
+npm run lint       # ESLint check
+```
 
-- An online résumé that films itself: scroll to an entry and the camera pushes to its anchor
-- Your own character model (export a glb from Blender or intro3d)
-- A works gallery with markdown-authored detail pages
-- Eye-follows-cursor, auto-focus depth-of-field, Bloom, film grain — a full mood pass
-- Free hosting: GitHub Pages / Cloudflare Pages / any static host
-- Deployable to any subdirectory (`base: './'`, fully relative output)
+**Requirements:** Node.js 20+. No backend database, server setup, or API keys required.
 
-## Make It Yours
+---
 
-Content and presentation are separated; changing content mostly means editing data files:
+## Key Features
 
-| What you want to change | Where |
-| --- | --- |
-| Hero About copy | `COPY` in `src/App.tsx` |
-| Résumé (education / experience / clients / social links) | `src/ui/Resume.tsx` |
-| Works sections and work list | `src/data/works.ts` |
-| A single work's detail body | `src/content/works/<slug>.md` (frontmatter + markdown; format in `src/data/workDocs.ts`, example in `src/content/works/example.md`) |
-| Number of résumé entries / camera stops | `FOCUS_POINTS` in `src/data/focusPoints.ts` (keep it in sync with `Resume.tsx`'s entries) |
-| Lights / DoF / Bloom / background gradient / character position | **Plain constants** at the top of each component in `src/scene/Scene.tsx` — edit the values directly, no panel and no extra config file |
-| The character model | `public/models/me.glb`, see [Swapping the character model](#swapping-the-character-model) |
+- 🎬 **Scroll-Driven Camera Movements:** The 3D camera glides between focal points corresponding to each résumé milestone and project gallery stop as you scroll.
+- 👁️ **Interactive Eye Tracking:** The 3D avatar's eyes dynamically follow the visitor's cursor across the screen.
+- 📊 **Data Analyst Project Gallery:** Modular markdown-driven portfolio showcasing real-world projects:
+  - **Business Analytics & Reporting Suite** (SQL · Data Modeling · PostgreSQL · KPI Tracking)
+  - **5-Min Price Ready Sales Engine** (Python · Streamlit · Local LLM · RapidFuzz)
+  - **American Store Sales Analysis** (Excel · Power Query · 9,900+ Records EDA)
+  - **Rental Bikes Analysis** (Python · Streamlit · Pandas · Time-Series EDA)
+  - **The Sumatra Poverty Paradox** (Looker Studio · SQL · Policy Analytics)
+- 🎓 **Career & Education Timeline:** Highlights academic excellence at Bina Nusantara University (Computer Science, GPA 3.71, 100% Scholarship) and professional roles at Digipack.id, MySkill Academy, Google Student Ambassador, and PT Adhi Karya.
+- 🏆 **National Honors & Accreditations:** Samsung Solve for Tomorrow 2025 Semifinalist, Youth Microfound Business Plan Competition Best Execution, and certified specializations.
+- 🎨 **Cinematic Visual Effects:** Post-processing pipeline with Depth of Field, Bloom, SMAA antialiasing, and film grain overlay.
+- 🌐 **Fully Static & Portable:** Zero backend, relative asset pathing (`base: './'`), ready for GitHub Pages, Cloudflare Pages, Netlify, or Vercel.
 
-Work details use minimal markdown: one `.md` per work, linked via the `slug` on each item in `works.ts`; a work with no matching `.md` falls back to the shared placeholder detail.
+---
 
-## Assets & Media
+## Project Structure
 
-- **Work details are placeholders by default.** The open-source version ships without the author's work details or media: the gallery keeps each section / work **title**, and opening a detail shows a shared placeholder (change `detailPlaceholder / phImageLabel / phButtonLabel` in `works.ts`). To fill one in, write a `src/content/works/<slug>.md` and it renders as a full detail.
-- **`public/works/` is not tracked by git by default** (large and personal, see `.gitignore`) — only the 4 section covers `public/works/covers/*.jpg` are kept; place other media yourself or serve it from a CDN, referenced with `/works/...` absolute paths.
-- Assets in `public/models/`, `public/images/`, `public/textures/`, `public/fonts/` are tracked. Among them the character model, brand logos, and images are personal content (see [`NOTICE`](NOTICE)); fonts / HDR are third-party — check their licenses before reuse.
-- `scripts/compress-media.sh` uses ffmpeg to compress images / videos under `public` in place (max width 1920, H.264 video ~2Mbps), overwriting only when the result is smaller.
+```
+portfolio-umar/
+├── web/                               # Front-end React Three Fiber application
+│   ├── index.html                     # HTML entry point (SEO metadata & Google Fonts)
+│   ├── package.json                   # Dependencies and npm scripts
+│   ├── vite.config.ts                 # Vite config (relative base './')
+│   ├── src/
+│   │   ├── main.tsx                   # React root entry
+│   │   ├── App.tsx                    # Canvas assembly, Hero (About Umar), scroll layout
+│   │   ├── store.ts                   # Zustand global interaction state
+│   │   ├── styles.css                 # Global styling, responsive layout, dark aesthetic
+│   │   ├── data/
+│   │   │   ├── works.ts               # Works sections: Analytics, Skills, Training, Honors
+│   │   │   ├── workDocs.ts            # Markdown loader and frontmatter parser for projects
+│   │   │   └── focusPoints.ts         # 6 camera timeline anchors (focus-1 to focus-6)
+│   │   ├── content/works/             # Individual project markdown write-ups
+│   │   │   ├── american-store-sales.md
+│   │   │   ├── business-analytics-suite.md
+│   │   │   ├── price-ready-sales-engine.md
+│   │   │   ├── rental-bikes-analysis.md
+│   │   │   ├── sumatra-poverty-paradox.md
+│   │   │   └── example.md
+│   │   ├── scene/
+│   │   │   ├── Scene.tsx              # 3D Scene, avatar loader, camera track, eye tracker
+│   │   │   └── Env.tsx                # HDR lighting & environment reflections
+│   │   └── ui/
+│   │       ├── Resume.tsx             # Interactive résumé milestones & credentials
+│   │       ├── Works.tsx              # Horizontal project gallery & detail modals
+│   │       ├── LoadingScreen.tsx      # Model loading animation
+│   │       ├── NoiseOverlay.tsx       # Cinematic film grain overlay
+│   │       ├── SocialIcons.tsx        # LinkedIn, GitHub, Email icons
+│   │       └── ZooopLogo.tsx          # SVG brand logo
+│   └── public/
+│       ├── models/                    # 3D assets (me.glb, me_original.glb)
+│       ├── works/covers/              # Project section cover imagery
+│       ├── textures/                  # env.hdr environment map
+│       ├── images/                    # UI icons and graphics
+│       └── fonts/                     # Typography assets
+├── blender/                           # Blender 3D source files (sen.blend)
+├── tutor/                             # Step-by-step guides (deploy, stickers, intro3d, eyes)
+├── docs/                              # Documentation previews (preview.jpg)
+├── .github/workflows/deploy.yml       # GitHub Actions CI/CD for GitHub Pages
+├── README.md                          # Primary documentation (English)
+├── README.zh.md                       # Chinese documentation (简体中文)
+├── CLAUDE.md / AGENTS.md              # Conventions for AI coding assistants
+└── LICENSE / NOTICE                   # Open source license & personal content notice
+```
 
-## Swapping the Character Model
+---
 
-To use your own character, replace `public/models/me.glb` (its source is [`blender/sen.blend`](blender) at the repo root — edit it in Blender and export a glb over it), or rewrite `src/scene/Scene.tsx` with your own scene. The code looks these up in the glb **by object name**; whatever is missing, that feature breaks:
+## Customization
 
-| The glb needs | What it does | If it's missing |
+Content is cleanly decoupled from 3D presentation:
+
+| What to Update | File Path | Description |
 | --- | --- | --- |
-| A camera + an animation clip named `CameraAction` | The scroll-driven camera path; its total frame count is read at runtime (24fps), not hardcoded | No camera motion — the whole effect is gone |
-| `focus-start` (or `focus-0`) | The hero's starting focus anchor (an empty); both names accepted | Hero auto-focus stops working |
-| The timeline focus anchors (one empty per résumé entry) | Listed in order in `FOCUS_POINTS` (`src/data/focusPoints.ts`) — the single source of truth shared by `Scene.tsx` and `Resume.tsx`. The count is **dynamic** | That node never pulls focus |
-| `focus-works` | The works-section focus anchor (an empty); optional | Falls back to the last timeline anchor |
-| A mesh whose name contains `eye` | The eyes (eye-follows-cursor) | The eyes stay still |
+| **Hero & About Copy** | [`web/src/App.tsx`](web/src/App.tsx) | Edit the `COPY` object (`title` and `paragraphs`) |
+| **Résumé & Timeline** | [`web/src/ui/Resume.tsx`](web/src/ui/Resume.tsx) | Education, work experience, roles, scholarship, certifications |
+| **Social Links** | [`web/src/ui/Resume.tsx`](web/src/ui/Resume.tsx) | `SOCIAL_LINKS` array (LinkedIn, GitHub, Email) |
+| **Project Catalog** | [`web/src/data/works.ts`](web/src/data/works.ts) | Project sections, live app links, tags, and descriptions |
+| **Project Write-Ups** | [`web/src/content/works/*.md`](web/src/content/works) | Markdown files with frontmatter linked by project `slug` |
+| **Camera Focus Anchors** | [`web/src/data/focusPoints.ts`](web/src/data/focusPoints.ts) | `FOCUS_POINTS` array (keep in sync with `Resume.tsx` entries) |
+| **Scene Lighting & Post-FX**| [`web/src/scene/Scene.tsx`](web/src/scene/Scene.tsx) | Constants for lights, Depth of Field, Bloom, and model position |
+| **3D Model** | [`web/public/models/me.glb`](web/public/models/me.glb) | Export from Blender or [intro3d.com](https://intro3d.com) |
+
+---
 
 ## How It Works
 
-A pure front-end SPA, no backend and no router: `index.html` → `src/main.tsx` → `src/App.tsx` (one fixed `<Canvas>` 3D background + a scrollable HTML overlay).
+This is a pure front-end Single Page Application (SPA):  
+`index.html` → `src/main.tsx` → `src/App.tsx` (Fixed 3D `<Canvas>` background + scrollable HTML content overlay).
 
-- **3D background**: `src/scene/Scene.tsx` loads `public/models/me.glb` and, using the glb's own camera animation, wipes through it in 5 scroll-driven segments, layering auto-focus depth-of-field and eye-follows-cursor on top. Lighting comes from `src/scene/Env.tsx` (`public/textures/env.hdr` as IBL).
-- **Scroll content**: `Hero` (About, inside `App.tsx`) → `src/ui/Resume.tsx` (résumé timeline) → `src/ui/Works.tsx` (works gallery + detail modal).
-- **Overlays**: `LoadingScreen` (masks the screen until the model loads), `NoiseOverlay` (film grain), scroll-darken / frosted right rail / hero decorative frame (all in `App.tsx`).
-- **Post-processing**: the `<EffectComposer>` order is DepthOfField → Bloom → SMAA; mind the order when changing effects, it affects compositing.
-- **Global state**: `src/store.ts` (zustand, lightweight).
-
-The camera lines up with the résumé through `CameraAction`'s **frame convention** (24fps):
+### 1. Camera Timeline Sync
+The camera movement syncs with the résumé milestones through `CameraAction`'s frame convention (24 fps):
 
 ```
-frame 0                                                          last frame
-  │        │        │        │        │        │                    │
-focus-0  focus-1  focus-2  focus-3  focus-4  focus-5  ···  ···  focus-works
-hero    ├─50 fr.─┤ timeline nodes sit 50 frames apart      tail = works (any length)
+Frame 0                                                              Last Frame
+   │         │         │         │         │         │         │         │
+focus-0   focus-1   focus-2   focus-3   focus-4   focus-5   focus-6   focus-works
+ Hero     ├─ 50 fr ─┤ 50 frames per résumé milestone             Tail = Works Gallery
 ```
 
 ```ts
-// src/data/focusPoints.ts — the single source of truth for entries / camera stops
-export const FOCUS_POINTS = ['focus-1', 'focus-2', 'focus-3', 'focus-4', 'focus-5'] as const
+// web/src/data/focusPoints.ts
+export const FOCUS_POINTS = ['focus-1', 'focus-2', 'focus-3', 'focus-4', 'focus-5', 'focus-6'] as const
 export const FRAMES_PER_NODE = 50
 ```
 
-To add or remove a résumé entry, change `FOCUS_POINTS` + `Resume.tsx`'s entries; the node count and frame ranges are derived automatically.
+### 2. 3D Model Requirements
+The `.glb` file located at `web/public/models/me.glb` contains specific named objects that the engine queries:
+- **Camera + `CameraAction`**: The baked camera animation track.
+- **`focus-0` (or `focus-start`)**: Starting hero focus anchor.
+- **`focus-1` through `focus-6`**: Focal points for each résumé entry.
+- **`focus-works`**: Focal point for the project gallery.
+- **Mesh containing `eye`**: Targets for the cursor-following eye motion.
 
-## Repo Layout
-
-| Directory | Contents |
-| --- | --- |
-| [`web/`](web) | The front-end app (React Three Fiber + TypeScript); every code convention lives here |
-| [`blender/`](blender) | The 3D scene source `sen.blend` (character + camera animation + focus anchors) — what you edit before exporting the glb |
-| [`tutor/`](tutor) | Fork-it-yourself tutorials (deploy, stickers, eyes, intro3d model export) |
-| [`docs/`](docs) | The preview image used by this README |
-| [`CLAUDE.md`](CLAUDE.md) [`AGENTS.md`](AGENTS.md) | Conventions for AI coding assistants |
-| [`LICENSE`](LICENSE) [`NOTICE`](NOTICE) | License & content notice |
-
-Inside `web/`:
-
-```
-web/
-  src/
-    App.tsx              Canvas + scroll-content assembly, hero About, loading/overlays
-    main.tsx             entry
-    store.ts             global interaction state (zustand)
-    data/
-      works.ts           works sections / work list (the works data source)
-      workDocs.ts        build-time inlining of content/works/*.md + frontmatter parsing
-      focusPoints.ts     timeline focus-anchor list (source of truth for entry count)
-    content/works/       work-detail markdown; includes an example.md template
-    scene/
-      Scene.tsx          3D scene: me.glb character + glb camera animation + scroll / eye-follow
-      Env.tsx            env.hdr environment lighting (IBL)
-    ui/
-      Resume.tsx         résumé timeline (holds personal data)
-      Works.tsx          works gallery + detail modal
-      LoadingScreen.tsx / NoiseOverlay.tsx / SocialIcons.tsx / ZooopLogo.tsx
-  public/
-    models/  fonts/  images/  textures/   static assets
-  scripts/compress-media.sh                media compression script (ffmpeg, in place)
-```
-
-## Tutorials
-
-Step-by-step guides written for users (who may not code), all under [`tutor/`](tutor). **They're currently written in Chinese.**
-
-| Tutorial | What it covers |
-| --- | --- |
-| [① Deploy to GitHub Pages](tutor/部署教程/1-部署到-GitHub-Pages.md) | Publish for free at `your-name.github.io/sen-3d-resume/`, all point-and-click |
-| [② Deploy to Cloudflare Pages](tutor/部署教程/2-部署到-Cloudflare-Pages.md) | Free for private repos too, global CDN, easier custom domains |
-| [Prep your model in intro3d](tutor/intro3d处理模型教程/intro3d处理模型教程.md) | Skip Blender — arrange model and camera in the browser and export `me.glb` (with video) |
-| [Eye-follows-cursor](tutor/眼球教程/眼球教程.md) | How the eyes track the mouse, and how to wire it up for your own model (with video) |
-| [AI sticker packs](tutor/贴纸教程/贴纸教程.md) | Batch-generate transparent stickers with AI for the face / scene / web |
+---
 
 ## Deploy
 
 ```bash
 cd web
-npm run build    # → dist/
+npm run build    # Generates production bundle in web/dist/
 ```
 
-`vite.config.ts` sets `base: './'`, so output uses relative paths — `dist/` opens by double-click and can live in any subdirectory (e.g. `example.com/portfolio/`). At runtime public assets are joined with `import.meta.env.BASE_URL`. Deploying is just uploading `dist/` to any static host (GitHub Pages / Cloudflare Pages / Netlify / Vercel / object storage / your own server). The repo ships [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), so pushing to `main` publishes to GitHub Pages automatically.
+Because `base: './'` is configured in `vite.config.ts`, all assets use relative paths. The `dist/` directory can be deployed directly to:
+- **GitHub Pages:** Included via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) on push to `main`.
+- **Vercel / Cloudflare Pages / Netlify:** Set build command to `npm run build` and output directory to `web/dist`.
 
-## Source vs No-Code
-
-This project and [intro3d.com](https://intro3d.com) are two ends of the same idea. To get online fast, start with intro3d; for full control and deep customization, use this source (they also combine well: export the glb from intro3d, then customize in code).
-
-|  | **This project (source)** | **intro3d (no-code)** |
-| --- | --- | --- |
-| Getting started | Needs some front-end / CLI comfort | Click around in a browser, beginner-friendly |
-| Customization | Everything — scene, post-processing, interactions, structure | Whatever the platform exposes |
-| Eye-follows-cursor | ✅ | ❌ |
-| 3D model | Make it in Blender or export from intro3d | Handled visually in the platform |
-| Deployment | Upload `dist/` to any static host yourself | Hosted for you |
-| License | Code MIT (personal content excluded, see `NOTICE`) | Platform terms of service |
-
-## Why This Project?
-
-- **Scroll is the camera move:** the camera path is animation baked into the glb, and the scrollbar just wipes its timeline — easier to tune and swap than hand-written camera interpolation.
-- **Data-driven:** changing content means editing data files (`Resume.tsx` / `works.ts` / `*.md` / `COPY`), never the 3D code.
-- **Dynamic node count:** the number of résumé entries isn't hardcoded — add one to `FOCUS_POINTS` and nodes plus frame ranges adapt.
-- **Parameters are just constants:** every tunable is a plain constant at the top of a component; there is no hidden config layer.
-- **Fully static:** no backend, no router, no API keys — `dist/` runs anywhere, including inside a subdirectory.
-- **Agent-friendly:** [`CLAUDE.md`](CLAUDE.md) / [`AGENTS.md`](AGENTS.md) already spell out the conventions, so Claude Code / Cursor stay on the rails.
+---
 
 ## Tech Stack
 
-React 18 · TypeScript · @react-three/fiber · @react-three/drei · @react-three/postprocessing · three · framer-motion · zustand · Vite
+- **Core:** React 18 · TypeScript 5 · Vite 5
+- **3D & Graphics:** Three.js (r169) · @react-three/fiber · @react-three/drei · @react-three/postprocessing
+- **Animation & State:** Framer Motion · Zustand
+- **Analytics & Tools:** Python · SQL · Streamlit · PostgreSQL · Microsoft Excel Power Query · Looker Studio
+
+---
 
 ## License & Copyright
 
-- **Code:** [MIT](LICENSE).
-- **Personal content and assets:** © Sen Zheng (SEN), all rights reserved, **not covered by MIT** — see [`NOTICE`](NOTICE). After forking, replace the name, model, résumé, works, and logos with your own.
-- **Third-party assets** (fonts / HDR): check their original licenses before redistributing.
+- **Code:** Licensed under [MIT](LICENSE).
+- **Personal Content & 3D Model:** © Khalif Umar Al Faruq (Umar). All rights reserved. **Not covered by MIT** — see [`NOTICE`](NOTICE). Please substitute your own avatar model, personal resume, project texts, and brand logos.
