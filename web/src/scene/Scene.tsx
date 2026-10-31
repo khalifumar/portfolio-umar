@@ -255,25 +255,80 @@ function Man2({
   // 不切换激活相机（避免后处理 CoC 缓存旧相机 near/far 导致整体糊）。
   // 改为每帧把 glb 相机的世界变换 + fov 拷到默认相机上。
 
-  // window 级鼠标输入（smouse 为缓动后的值）
+  // window 级输入（支持鼠标移动、手机触控 touchmove/touchstart、以及陀螺仪倾斜）
   const mouse = useRef({ x: 0, y: 0 })
   const smouse = useRef({ x: 0, y: 0 })
+  const isMobile = useRef(false)
+
   useEffect(() => {
+    const checkMobile = () => {
+      isMobile.current =
+        typeof window !== 'undefined' &&
+        ((window.matchMedia?.('(pointer: coarse)').matches === true) ||
+          window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
     const onMove = (e: MouseEvent) => {
       mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1
       mouse.current.y = -((e.clientY / window.innerHeight) * 2 - 1)
     }
-    window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
-  }, [])
 
-  // 移动端 / 触屏（无鼠标可跟随）：关闭眼睛跟随，眼睛保持默认朝向。
-  // 判定 = 触屏指针 或 窄视口（≤640px，与移动端样式断点一致）。
-  const isMobile = useRef(
-    typeof window !== 'undefined' &&
-      (window.matchMedia?.('(pointer: coarse)').matches === true ||
-        window.innerWidth <= 640)
-  )
+    const onTouch = (e: TouchEvent) => {
+      if (e.touches && e.touches.length > 0) {
+        const t = e.touches[0]
+        mouse.current.x = (t.clientX / window.innerWidth) * 2 - 1
+        mouse.current.y = -((t.clientY / window.innerHeight) * 2 - 1)
+      }
+    }
+
+    let touchReleaseTimer: any = null
+    const onTouchEnd = () => {
+      // 触控离开后，平滑让目光渐渐恢复居中
+      clearInterval(touchReleaseTimer)
+      touchReleaseTimer = setInterval(() => {
+        mouse.current.x *= 0.88
+        mouse.current.y *= 0.88
+        if (Math.hypot(mouse.current.x, mouse.current.y) < 0.01) {
+          mouse.current.x = 0
+          mouse.current.y = 0
+          clearInterval(touchReleaseTimer)
+        }
+      }, 16)
+    }
+
+    // 陀螺仪重力感应微互动（Android & iPhone）
+    const onOrientation = (e: DeviceOrientationEvent) => {
+      if (e.gamma !== null && e.beta !== null) {
+        const tiltX = THREE.MathUtils.clamp(e.gamma / 25, -1, 1)
+        const tiltY = THREE.MathUtils.clamp((e.beta - 40) / 25, -1, 1)
+        // 与当前触摸做平滑混合
+        mouse.current.x = THREE.MathUtils.lerp(mouse.current.x, tiltX * 0.6, 0.08)
+        mouse.current.y = THREE.MathUtils.lerp(mouse.current.y, -tiltY * 0.6, 0.08)
+      }
+    }
+
+    window.addEventListener('mousemove', onMove)
+    window.addEventListener('touchmove', onTouch, { passive: true })
+    window.addEventListener('touchstart', onTouch, { passive: true })
+    window.addEventListener('touchend', onTouchEnd, { passive: true })
+    if (typeof window !== 'undefined' && window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', onOrientation, { passive: true })
+    }
+
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('touchmove', onTouch)
+      window.removeEventListener('touchstart', onTouch)
+      window.removeEventListener('touchend', onTouchEnd)
+      if (typeof window !== 'undefined' && window.DeviceOrientationEvent) {
+        window.removeEventListener('deviceorientation', onOrientation)
+      }
+      clearInterval(touchReleaseTimer)
+    }
+  }, [])
 
   // 履历锚点 DOM 元素（决定当前播放到第几段）
   const anchorEls = useRef<any>(null)
@@ -527,8 +582,8 @@ function Man2({
       }
     }
 
-    // 4) 眼睛/头像跟随光标（用当前激活相机做屏幕投影）；移动端 / 触屏则跳过
-    if (!eye.enabled || isMobile.current) return
+    // 4) 眼睛/头像跟随光标或触摸（用当前激活相机做屏幕投影）
+    if (!eye.enabled) return
     const sx = eye.invertX ? -1 : 1
     const sy = eye.invertY ? -1 : 1
 
